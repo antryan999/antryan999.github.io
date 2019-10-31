@@ -21,20 +21,8 @@
 	
 	<!-- app store/app launch logic-->
 	<script type="text/javascript">
-		function transformURL() {
-	var pingitToMeURL = 'pingit://41/anthonyryan'
-                    if (pingitToMeURL != undefined) {
-                        window.location.href = pingitToMeURL;
-                        window.setTimeout(
-                        function(){
-                            window.location.replace(oldURL + '?version=mobile');
-                            window.location.reload();
-                        },
-                        4000);
-                    }
-            }
+		window.location.href = 'pingit://41/anthonyryan';
 
-			transformURL();
 	</script>
 	<noscript>
 		<meta http-equiv="refresh"

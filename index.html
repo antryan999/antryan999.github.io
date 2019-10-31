@@ -21,44 +21,20 @@
 	
 	<!-- app store/app launch logic-->
 	<script type="text/javascript">
-		var pingit_app = 'https://www.pingit.com';
-		var handle = window.location.search.slice(10);
-		if (navigator.userAgent.match('iPhone')
-				|| navigator.userAgent.match('iPad')
-				|| navigator.userAgent.match('iPod')) {
-			var meta = document.createElement('meta');
-			meta.httpEquiv = "X-UA-Compatible";
-			meta.name = "apple-itunes-app";
-			meta.content = "app-id=496552142, app-argument=" + window.location;
-			// document.getElementsByTagName('head')[0].appendChild(meta);
+		function transformURL() {
+	var pingitToMeURL = 'pingit://41/anthonyryan'
+                    if (pingitToMeURL != undefined) {
+                        window.location.href = pingitToMeURL;
+                        window.setTimeout(
+                        function(){
+                            window.location.replace(oldURL + '?version=mobile');
+                            window.location.reload();
+                        },
+                        4000);
+                    }
+            }
 
-			
-			// document.getElementById('loader').src = "pingit://" + window.location;
-			
-			document.querySelector('meta[name="apple-itunes-app"]').setAttribute("content", "app-id=496552142, app-argument=" + window.location);
-
-			console.log(document.querySelector('meta[name="apple-itunes-app"]').getAttribute("content"));
-
-			//try redirect, will only work if app installed
-			window.location="pingit://" + window.location;
-			
-		} else if (navigator.userAgent.match('Android')) {
-// 			window.location.href = "intent://"
-// 					+ handle
-// 					+ "/#Intent;scheme=pingit;package=com.barclays.apps.pingit;end"
-			window.location.href="pingit://41/anthonyryan"
-		} else {
-			// window.location.replace(pingit_app);
-
-			document.getElementById('loader').src = "pingit://" + window.location;
-		}
-
-		// function getUrlParameter(name) {
-		// 	name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-		// 	var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
-		// 	var results = regex.exec(location.search);
-		// 	return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
-		// };
+			transformURL();
 	</script>
 	<noscript>
 		<meta http-equiv="refresh"
